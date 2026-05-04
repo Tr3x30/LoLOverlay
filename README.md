@@ -1,2 +1,2 @@
-# macLoL.github.io
-McMaster LoL Stream Overlays
+# tr3x30.github.io/LoLOverlay
+LoL Stream Overlays
