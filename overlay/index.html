@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,68 +12,193 @@
 </head>
 
 <body>
-<img src="maroon_background.jpg" alt="Overlay" class="clip-svg">
+  <aside id="control-drawer" class="open">
+    <div id="drawer-tab">CONTROLS</div>
 
-<!-- SVG defining clipping shapes -->
-<div>
-  <svg width="0" height="0">
+    <div class="drawer-content">
+      <div class="drawer-header">
+        <h2>Overlay Control Panel</h2>
+        <p>Press <strong>Ctrl + Shift + M</strong> to close / open this panel</p>
+      </div>
+
+      <section class="menu-section">
+        <h3>Visibility</h3>
+        <div class="menu-grid">
+          <button type="button" class="toggle-btn" data-toggle-target="player-card-clip">Player Card Window</button>
+          <button type="button" class="toggle-btn" data-toggle-target="player-card">Player Card Image</button>
+
+          <button type="button" class="toggle-btn" data-toggle-target="scoreboard-bar">Scoreboard Window</button>
+          <button type="button" class="toggle-btn"
+            data-toggle-targets="right-top-line,right-bottom-line,right-left-line,right-right-line">
+            Right Lines
+          </button>
+
+          <button type="button" class="toggle-btn" data-toggle-target="blue-team">Blue Team Block</button>
+          <button type="button" class="toggle-btn" data-toggle-target="red-team">Red Team Block</button>
+        </div>
+      </section>
+
+      <section class="menu-section">
+        <h3>Text</h3>
+
+        <label class="field text-control">
+          <span>Header Text</span>
+          <div class="text-control-row">
+            <textarea rows="2" data-text-target="bar-text"></textarea>
+            <input type="color" data-colour-target="bar-text" value="#ffffff">
+          </div>
+        </label>
+
+        <label class="field text-control">
+          <span>Patch Text</span>
+          <div class="text-control-row">
+            <textarea rows="2" data-text-target="patch-text"></textarea>
+            <input type="color" data-colour-target="patch-text" value="#ffffff">
+          </div>
+        </label>
+
+        <label class="field text-control">
+          <span>Blue Team Name</span>
+          <div class="text-control-row">
+            <input type="text" data-text-target="blue-team-name">
+            <input type="color" data-colour-target="blue-team-name" value="#ffffff">
+          </div>
+        </label>
+
+        <label class="field text-control">
+          <span>Red Team Name</span>
+          <div class="text-control-row">
+            <input type="text" data-text-target="red-team-name">
+            <input type="color" data-colour-target="red-team-name" value="#ffffff">
+          </div>
+        </label>
+      </section>
+
+      <section class="menu-section">
+        <h3>Match Controls</h3>
+
+        <div class="button-row">
+          <button type="button" id="best-of-3-btn">Set Best of 3</button>
+          <button type="button" id="best-of-5-btn">Set Best of 5</button>
+          <button type="button" id="swap-sides-btn">Swap Sides</button>
+        </div>
+
+        <div class="button-row">
+          <button type="button" id="blue-win-down-btn">Blue −</button>
+          <button type="button" id="blue-win-up-btn">Blue +</button>
+          <button type="button" id="red-win-down-btn">Red −</button>
+          <button type="button" id="red-win-up-btn">Red +</button>
+        </div>
+
+        <div class="status-block">
+          <div>Series: <strong id="series-label">Best of 3</strong></div>
+          <div>Blue wins: <strong id="blue-win-count-label">0</strong></div>
+          <div>Red wins: <strong id="red-win-count-label">0</strong></div>
+        </div>
+      </section>
+
+      <section class="menu-section">
+        <h3>Background Image</h3>
+
+        <label class="field">
+          <span>Upload Custom Background</span>
+          <input type="file" id="background-upload" accept="image/*">
+        </label>
+
+        <div class="default-bg-grid">
+          <button type="button" class="bg-preset" data-bg-src="maroon_background.jpg">
+            Default 1
+          </button>
+
+          <button type="button" class="bg-preset" data-bg-src="default-sky.webp">
+            Default 2
+          </button>
+
+          <button type="button" class="bg-preset" data-bg-src="default-marble.jpg">
+            Default 3
+          </button>
+        </div>
+      </section>
+      <section class="menu-section">
+        <h3>Player Card Image</h3>
+
+        <label class="field">
+          <span>Upload Custom Player Card</span>
+          <input type="file" id="player-card-upload" accept="image/*">
+        </label>
+      </section>
+    </div>
+  </aside>
+
+  <img id="background-overlay" src="maroon_background.jpg" alt="Overlay" class="clip-svg">
+
+  <svg width="1920" height="1080" aria-hidden="true">
     <defs>
       <clipPath id="myClip">
-        <rect x="3" y="965" width="300" height="112" rx="3" ry="3"/>
-        <rect id="scoreboard-bar" x="610" y="783" width="715" height="64" rx="3" ry="3"/>
-        <rect x="1642" y="802" width="278" height="15"/>
-        <rect x="1642" y="1070" width="278" height="10"/>
-        <rect x="1642" y="817" width="15" height="253"/>
-        <rect x="1910" y="812" width="10" height="258"/>
+        <rect id="player-card-clip" x="3" y="965" width="300" height="112" rx="3" ry="3" data-hideable="true"></rect>
+
+        <rect id="scoreboard-bar" x="610" y="783" width="715" height="64" rx="3" ry="3" data-hideable="true"></rect>
+
+        <rect id="right-top-line" x="1642" y="802" width="278" height="15"></rect>
+        <rect id="right-bottom-line" x="1642" y="1070" width="278" height="10"></rect>
+        <rect id="right-left-line" x="1642" y="817" width="15" height="253"></rect>
+        <rect id="right-right-line" x="1910" y="812" width="10" height="258"></rect>
+
       </clipPath>
     </defs>
   </svg>
-  <div id="bar-text">CLOL GROUP STAGE - ROUND 2</div>
-</div>
 
-<div>
-  <img src="mac_esports.jpg" alt="" class="player-card">
-  <div id="patch-text" class="patch-text">PATCH<br>25.20</div>
-</div>  
+  <div id="bar-text" data-editable="true">CLOL GROUP STAGE - ROUND 2</div>
 
-<div class="top-bar">
-  <div class="blue-team">
-    <div class="team-name">MCMASTER MAROONS</div>
-    <div class="wins">
-      <div class="win"></div>
-      <div class="win"></div>
-      <div class="win"></div>
+  <img id="player-card" src="filler.png" alt="" class="player-card" data-hideable="true">
+
+  <div id="patch-text" class="patch-text" data-editable="true" data-hideable="true">PATCH<br>25.20</div>
+
+  <div id="top-bar" class="top-bar" data-hideable="true">
+    <div id="blue-team" class="blue-team" data-hideable="true">
+      <div id="blue-team-name" class="team-name" data-editable="true" data-hideable="true">MCMASTER MAROONS</div>
+
+      <div id="blue-wins" class="wins" data-hideable="true">
+        <div id="blue-win-1" class="win" data-hideable="true"></div>
+        <div id="blue-win-2" class="win" data-hideable="true"></div>
+        <div id="blue-win-3" class="win" data-hideable="true"></div>
+      </div>
+
+      <svg id="blue-overlay" class="overlay" width="350" height="41" data-hideable="true">
+        <defs>
+          <mask id="blue-mask">
+            <rect x="0" y="0" width="350" height="41" fill="white"></rect>
+            <circle cx="0" cy="41" r="21" fill="black"></circle>
+          </mask>
+        </defs>
+        <rect id="blue-bar" x="0" y="0" width="350" height="41" fill="#245FC5" mask="url(#blue-mask)"
+          data-hideable="true"></rect>
+      </svg>
     </div>
 
-    <svg class="overlay" width="350" height="41"> 
-      <defs>
-        <mask id="blueMask">
-          <rect x="0" y="0" width="350" height="41" fill="white"/>
-          <circle cx="0" cy="41" r="21" fill="black"/>
-        </mask>
-      </defs>
-      <rect x="0" y="0" width="350" height="41" fill="#245FC5" mask="url(#blueMask)"/>
-    </svg>
+    <div id="red-team" class="red-team" data-hideable="true">
+      <div id="red-team-name" class="team-name" data-editable="true" data-hideable="true">MCGILL CLOL MAIN</div>
+
+      <div id="red-wins" class="wins" data-hideable="true">
+        <div id="red-win-1" class="win" data-hideable="true"></div>
+        <div id="red-win-2" class="win" data-hideable="true"></div>
+        <div id="red-win-3" class="win" data-hideable="true"></div>
+      </div>
+
+      <svg id="red-overlay" class="overlay" width="350" height="41" data-hideable="true">
+        <defs>
+          <mask id="red-mask">
+            <rect x="0" y="0" width="350" height="41" fill="white"></rect>
+            <circle cx="350" cy="41" r="21" fill="black"></circle>
+          </mask>
+        </defs>
+        <rect id="red-bar" x="0" y="0" width="350" height="41" fill="#BE2038" mask="url(#red-mask)"
+          data-hideable="true"></rect>
+      </svg>
+    </div>
   </div>
 
-  <div class="red-team">
-    <div class="team-name">MCGILL CLOL MAIN</div>
-    <div class="wins">
-      <div class="win"></div>
-      <div class="win"></div>
-      <div class="win"></div>
-    </div>
-    <svg class="overlay" width="350" height="41"> 
-      <defs>
-        <mask id="redMask">
-          <rect x="0" y="0" width="350" height="41" fill="white"/>
-          <circle cx="350" cy="41" r="21" fill="black"/>
-        </mask>
-      </defs>
-      <rect x="0" y="0" width="350" height="41" fill="#BE2038" mask="url(#redMask)"/>
-    </svg>
-  </div>
-</div>
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
+
 </html>
