@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
 </head>
 
 <body>
@@ -106,15 +107,15 @@
         </label>
 
         <div class="default-bg-grid">
-          <button type="button" class="bg-preset" data-bg-src="maroon_background.jpg">
+          <button type="button" class="bg-preset" data-bg-src="images/default-maroon.jpg">
             Default 1
           </button>
 
-          <button type="button" class="bg-preset" data-bg-src="default-sky.webp">
+          <button type="button" class="bg-preset" data-bg-src="images/default-sky.webp">
             Default 2
           </button>
 
-          <button type="button" class="bg-preset" data-bg-src="default-marble.jpg">
+          <button type="button" class="bg-preset" data-bg-src="images/default-marble.jpg">
             Default 3
           </button>
         </div>
@@ -130,7 +131,7 @@
     </div>
   </aside>
 
-  <img id="background-overlay" src="maroon_background.jpg" alt="Overlay" class="clip-svg">
+  <img id="background-overlay" src="images/default-maroon.jpg" alt="Overlay" class="clip-svg">
 
   <svg width="1920" height="1080" aria-hidden="true">
     <defs>
@@ -148,15 +149,15 @@
     </defs>
   </svg>
 
-  <div id="bar-text" data-editable="true">CLOL GROUP STAGE - ROUND 2</div>
+  <div id="bar-text" data-editable="true">MATCH/LEAGUE INFO?</div>
 
-  <img id="player-card" src="filler.png" alt="" class="player-card" data-hideable="true">
+  <img id="player-card" src="images/filler.png" alt="" class="player-card" data-hideable="true">
 
-  <div id="patch-text" class="patch-text" data-editable="true" data-hideable="true">PATCH<br>25.20</div>
+  <div id="patch-text" class="patch-text" data-editable="true" data-hideable="true">PATCH<br>xx.xx</div>
 
   <div id="top-bar" class="top-bar" data-hideable="true">
     <div id="blue-team" class="blue-team" data-hideable="true">
-      <div id="blue-team-name" class="team-name" data-editable="true" data-hideable="true">MCMASTER MAROONS</div>
+      <div id="blue-team-name" class="team-name" data-editable="true" data-hideable="true">TEAM 1</div>
 
       <div id="blue-wins" class="wins" data-hideable="true">
         <div id="blue-win-1" class="win" data-hideable="true"></div>
@@ -177,7 +178,7 @@
     </div>
 
     <div id="red-team" class="red-team" data-hideable="true">
-      <div id="red-team-name" class="team-name" data-editable="true" data-hideable="true">MCGILL CLOL MAIN</div>
+      <div id="red-team-name" class="team-name" data-editable="true" data-hideable="true">TEAM 2</div>
 
       <div id="red-wins" class="wins" data-hideable="true">
         <div id="red-win-1" class="win" data-hideable="true"></div>
@@ -197,8 +198,6 @@
       </svg>
     </div>
   </div>
-
-  <script src="script.js"></script>
 </body>
 
 </html>
